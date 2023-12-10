@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<head>
+	<meta charset="utf-8">
+	<title>Empleados</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f0f0f0;
+			text-align: center;
+		}
+
+		h1 {
+			margin: 20px 0;
+		}
+
+		table {
+			border-collapse: collapse;
+			width: 80%;
+			margin: 20px auto;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+
+		th,
+		td {
+			border: 1px solid #ccc;
+			padding: 10px;
+			text-align: center;
+		}
+
+		th {
+			background-color: #333;
+			color: #fff;
+		}
+
+		a {
+			text-decoration: none;
+			color: #0078d4;
+			font-weight: bold;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		/* Estilo para el botón */
+		.volver-boton {
+			background-color: #3498db;
+			/* Color de fondo */
+			color: #fff;
+			/* Color del texto */
+			padding: 10px 20px;
+			/* Relleno interior del botón */
+			border: none;
+			/* Borde del botón */
+			border-radius: 5px;
+			/* Bordes redondeados */
+			cursor: pointer;
+			/* Cambiar el cursor al pasar por encima */
+		}
+
+		/* Estilo para cambiar el cursor al pasar por encima del enlace */
+		.volver-boton:hover {
+			background-color: #1e87d5;
+			/* Cambiar el color de fondo al pasar por encima */
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>Mostrar Empleados</h1>
+
+	<table>
+		<tr>
+			<th>Nombre</th>
+			<th>DNI</th>
+			<th>Sexo</th>
+			<th>Categoría</th>
+			<th>Años Trabajados</th>
+			<th>Edición</th>
+		</tr>
+		<tr th:each="empleado : ${empleados}">
+			<td th:text="${empleado.nombre}">Nombre</td>
+			<td th:text="${empleado.dni}">Dni</td>
+			<td th:text="${empleado.sexo}">Sexo</td>
+			<td th:text="${empleado.categoria}">Categoría</td>
+			<td th:text="${empleado.anyos}">Años Trabajados</td>
+			<td>
+				<a th:href="@{/empleados/editar/{dni}(dni=${empleado.dni})}" class="btn btn-info">Editar</a>
+				<a th:href="@{/empleados/{dni}(dni=${empleado.dni})}" class="btn btn-danger">Eliminar</a>
+			</td>
+		</tr>
+	</table>
+
+	<!-- Formulario para volver a la página de inicio -->
+	<form action="/index">
+		<button type="submit" class="volver-boton">Volver a la página de inicio</button>
+	</form>
+</body>
+
+
+</html>

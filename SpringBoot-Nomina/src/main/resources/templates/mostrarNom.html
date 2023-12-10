@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Mostrar Nómina</title>
+<style>
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f0f0f0;
+	text-align: center;
+}
+
+h1 {
+	margin: 20px 0;
+}
+
+table {
+	border-collapse: collapse;
+	width: 80%;
+	margin: 20px auto;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+th, td {
+	border: 1px solid #ccc;
+	padding: 10px;
+	text-align: center;
+}
+
+th {
+	background-color: #333;
+	color: #fff;
+}
+
+a {
+	text-decoration: none;
+	color: #0078d4;
+	font-weight: bold;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+/* Estilo para el bot�n */
+.volver-boton {
+	background-color: #3498db; /* Color de fondo */
+	color: #fff; /* Color del texto */
+	padding: 10px 20px; /* Relleno interior del bot�n */
+	border: none; /* Borde del bot�n */
+	border-radius: 5px; /* Bordes redondeados */
+	cursor: pointer; /* Cambiar el cursor al pasar por encima */
+}
+
+/* Estilo para cambiar el cursor al pasar por encima del enlace */
+.volver-boton:hover {
+	background-color: #1e87d5;
+	/* Cambiar el color de fondo al pasar por encima */
+}
+</style>
+</head>
+<body>
+    
+   <h1>Mostrar Nómina</h1>
+
+    <table>
+        <tr>
+            <td>DNI</td>
+            <td>Sueldo</td>
+        </tr>
+
+        <tr th:each="nomina : ${nominas}">
+           <td th:text="${nomina.dni}">Dni</td>
+           <td th:text="${nomina.sueldo}">Sueldo</td>
+        </tr>
+    </table>
+
+    <!-- Formulario para volver a la página de inicio -->
+    <form action="/index">
+        <button type="submit" class="volver-boton">Volver a la página de inicio</button>
+    </form>
+</body>
+
+</html>
